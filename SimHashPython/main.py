@@ -10,4 +10,4 @@ def get_features(s):
 
 input = sys.argv[1]
 
-print(f'{Simhash(get_features(input)).value:064b}')
+print(f'{Simhash(get_features(input), 128).value:0128b}')

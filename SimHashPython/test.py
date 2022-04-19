@@ -15,5 +15,6 @@ hash1 = Simhash(get_features(input1))
 hash2 = Simhash(get_features(input2))
 
 print(f'{hash1.value:064b}')
+print(f'{get_features(input1)}')
 #print(f'{hash1.value:064b}')
 #print(f'{hash1:064b}')

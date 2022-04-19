@@ -13,4 +13,8 @@
       <ProjectReference Include="..\NuGetLoader\NuGetLoader.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+    </ItemGroup>
+
 </Project>
