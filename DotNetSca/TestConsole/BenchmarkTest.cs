@@ -1,6 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
 using DotNetSca;
-using DotNetSCA;
 using DotNetSca.SimHash;
 
 public class BenchmarkTest

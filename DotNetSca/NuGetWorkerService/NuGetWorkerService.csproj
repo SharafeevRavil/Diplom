@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-NuGetWorkerService-AE23E3CF-D5CA-48D3-9D26-377639BFF63D</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DotNetScaServerData\DotNetScaServerData.csproj" />
+      <ProjectReference Include="..\DotNetSca\DotNetSca.csproj" />
+      <ProjectReference Include="..\Helpers\Helpers.csproj" />
+      <ProjectReference Include="..\NuGetLoader\NuGetLoader.csproj" />
+    </ItemGroup>
+</Project>

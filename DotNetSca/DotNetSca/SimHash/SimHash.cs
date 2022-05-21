@@ -6,7 +6,8 @@ namespace DotNetSca.SimHash;
 
 public class SimHash
 {
-    public const int HashLength = 128;
+    //public const int HashLength = 128;
+    public const int HashLength = 64;
 
     public static (Func<string, byte[]> hashFunc, Action disposeAction) GetMd5HashFunc()
     {

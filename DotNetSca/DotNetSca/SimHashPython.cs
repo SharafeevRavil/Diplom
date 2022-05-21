@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace DotNetSCA;
+namespace DotNetSca;
 
 public static class SimHashPython
 {
