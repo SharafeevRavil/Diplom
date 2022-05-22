@@ -31,4 +31,10 @@ public class WeatherForecastController : ControllerBase
             })
             .ToArray();
     }
+
+    [HttpGet("GetHui")]
+    public IActionResult GetHui()
+    {
+        return Ok("HUI");
+    }
 }
