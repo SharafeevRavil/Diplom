@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using ScaWebAngular.Data;
+using ScaWebAngular.Helpers;
 using ScaWebAngular.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -55,3 +56,6 @@ app.MapFallbackToFile("index.html");
 ;
 
 app.Run();
+
+DatabaseHelper.UpdateDatabase(app);
+await DatabaseHelper.EnsureDatabaseValid(app);

@@ -107,8 +107,8 @@ namespace DotNetScaServerData.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<byte[]>("Hash")
-                        .HasColumnType("bytea");
+                    b.Property<string>("Hash")
+                        .HasColumnType("text");
 
                     b.Property<int?>("PackageId")
                         .HasColumnType("integer");

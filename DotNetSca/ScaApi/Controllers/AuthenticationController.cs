@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Mvc;
 using ScaApi.Services;
 
 namespace ScaApi.Controllers;
@@ -14,9 +15,11 @@ public class AuthenticationController : ControllerBase
         _authenticationService = authenticationService;
     }
 
-    [HttpGet(Name = "GenerateAuthHash")]
-    public async Task<IActionResult> GenerateAuthHash()
+    [HttpGet(Name = "GenerateJwtToken")]
+    public async Task<IActionResult> GenerateJwtToken()
     {
-        return Ok(await _authenticationService.GenerateAuthHash());
+        var token = await _authenticationService.GetToken();
+        var tokenStr = new JwtSecurityTokenHandler().WriteToken(token);
+        return Ok(tokenStr);
     }
 }

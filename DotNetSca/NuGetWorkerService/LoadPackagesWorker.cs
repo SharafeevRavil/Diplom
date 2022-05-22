@@ -40,9 +40,9 @@ public class LoadPackagesWorker : BackgroundService
                     .ToList();
                 _logger.LogInformation("Found {Count} packages to load", packages.Count);
 
-                const int packagesLimit = 2;
+                const int packagesLimit = 1;
                 packages = packages.Take(packagesLimit).ToList();
-                foreach (var package in packages) 
+                foreach (var package in packages)
                     package.IsLoading = true;
                 await applicationDbContext.SaveChangesAsync(stoppingToken);
                 _logger.LogInformation("Taking {Count} packages to load", packages.Count);
@@ -51,10 +51,11 @@ public class LoadPackagesWorker : BackgroundService
                     HandleLoadedPackage(package)));
                 foreach (var createdPackage in createdPackages)
                 {
-                    if(createdPackage == null) continue;
+                    if (createdPackage == null) continue;
                     applicationDbContext.NuGetPackages.Add(createdPackage);
                     createdPackage.LoadRequest.IsLoaded = true;
                 }
+
                 await applicationDbContext.SaveChangesAsync(stoppingToken);
 
                 _logger.LogInformation("Handled {Count} packages", packages.Count);
@@ -119,7 +120,8 @@ public class LoadPackagesWorker : BackgroundService
                 createdPackage.Signatures.Add(new Signature()
                 {
                     Description = featuresList.Description,
-                    Hash = SimHash.GenerateSimHash(featuresList.Features, SimHash.GetMd5HashFunc())
+                    Hash = SimHash.HashBytesToString(
+                        SimHash.GenerateSimHash(featuresList.Features, SimHash.GetMd5HashFunc()))
                 });
             }
         }
