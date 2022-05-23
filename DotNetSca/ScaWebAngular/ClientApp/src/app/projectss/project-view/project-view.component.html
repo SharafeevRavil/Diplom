@@ -1,0 +1,20 @@
+<div *ngIf="!project" class="text-center">
+  <p><em>Loading...</em></p>
+</div>
+
+<div *ngIf="project">
+  <h1>Project {{project.name}}</h1>
+  <p>{{project.description}}</p>
+
+  <h3>Reports:</h3>
+  <div *ngFor="let report of project.reports">
+    <h4>Report from {{report.createdDate | date:'dd/MM/yyyy HH:mm:ss'}}</h4>
+    <p>Report initiator: {{report.initiator}}</p>
+    <div class="col-xs-3">
+      <button *ngIf="report.isFilledByServer" class="btn-block btn-success" disabled>Report is ready</button>
+      <button *ngIf="!report.isFilledByServer" class="btn btn-danger" disabled>Report is not ready</button>
+      <button class="btn btn-primary m-2" (click)="open(report.id)">Open</button>
+    </div>
+    <hr>
+  </div>
+</div>

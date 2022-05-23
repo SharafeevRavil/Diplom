@@ -38,17 +38,10 @@ public class AuthenticationService
     
     public async Task<JwtSecurityToken> GetToken(/*IdentityUser user = null*/)
     {
-        //var userRoles = await _userManager.GetRolesAsync(user);
-
         var authClaims = new List<Claim>
         {
-            //new(ClaimTypes.Name, user.UserName),
-            //new(ClaimTypes.NameIdentifier, user.Id),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
         };
-        
-        //authClaims.AddRange(userRoles.Select(userRole => new Claim(ClaimTypes.Role, userRole)));
-        //
         
         var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
 
@@ -57,7 +50,6 @@ public class AuthenticationService
             _configuration["JWT:ValidAudience"],
             //expires: DateTime.Now.AddHours(3),
             expires: DateTime.Now.AddYears(3),
-            //expires: DateTime.MaxValue,
             claims: authClaims,
             signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
         );

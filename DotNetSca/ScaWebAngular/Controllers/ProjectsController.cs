@@ -33,6 +33,17 @@ public class ProjectsController : ControllerBase
         return Ok(projects);
     }
     
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get(int id)
+    {
+        var userId = (User.FindFirstValue(ClaimTypes.NameIdentifier));
+        var user = await _userManager.FindByIdAsync(userId);
+        var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+        
+        var project = await _projectsService.GetProject(id, userId, isAdmin);
+        return Ok(project);
+    }
+    
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create(ProjectDto dto)

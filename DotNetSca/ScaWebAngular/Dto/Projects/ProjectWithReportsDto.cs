@@ -1,6 +1,8 @@
-﻿namespace ScaWebAngular.Dto.Projects;
+﻿using ScaWebAngular.Dto.Reports;
 
-public class ProjectWithReportsDto
+namespace ScaWebAngular.Dto.Projects;
+
+public class ProjectWithReportsDto : ProjectDto
 {
-    
+    public List<ReportDto> Reports { get; set; }
 }

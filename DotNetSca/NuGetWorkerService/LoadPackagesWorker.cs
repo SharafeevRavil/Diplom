@@ -37,6 +37,7 @@ public class LoadPackagesWorker : BackgroundService
 
                 var packages = applicationDbContext.NuGetPackageToLoads
                     .Where(x => !x.IsLoaded && !x.IsLoading)
+                    .OrderBy(x => x.Id)
                     .ToList();
                 _logger.LogInformation("Found {Count} packages to load", packages.Count);
 
@@ -109,12 +110,17 @@ public class LoadPackagesWorker : BackgroundService
             await Task.WhenAll(
                 dllFiles.Select(x => x)
                 .Select(Ast.GetSyntaxTreesFromFile));*/
+        _logger.LogInformation("Start hashing for package {PackageId}@{PackageVersion}",
+            package.PackageId, package.PackageVersion);
         foreach (var syntaxTrees in syntaxTreesArray)
         {
             if (syntaxTrees == null)
                 continue;
 
-            var featuresLists = (await Ast.GetFeaturesList(syntaxTrees)).FilterBySize(512).ToList();
+            const int limit = 10;
+            var syntaxTrees2 = syntaxTrees.Take(limit);
+
+            var featuresLists = (await Ast.GetFeaturesList(syntaxTrees2)).FilterBySize(512).ToList();
             foreach (var featuresList in featuresLists)
             {
                 createdPackage.Signatures.Add(new Signature()
@@ -124,6 +130,8 @@ public class LoadPackagesWorker : BackgroundService
                         SimHash.GenerateSimHash(featuresList.Features, SimHash.GetMd5HashFunc()))
                 });
             }
+            _logger.LogInformation("Syntax tree done with featuresLists {Lists} for package {PackageId}@{PackageVersion}",
+                featuresLists.Count, package.PackageId, package.PackageVersion);
         }
 
         _logger.LogInformation("Loaded {Count} signatures for package {PackageId}@{PackageVersion}",
