@@ -46,7 +46,7 @@ public static class DatabaseHelper
         {
             admin = new ApplicationUser
             {
-                UserName = "Admin",
+                UserName = "admin@mail.ru",
                 Email = "admin@mail.ru",
                 Id = Guid.NewGuid().ToString(),
             };
@@ -58,5 +58,7 @@ public static class DatabaseHelper
                 await userManager.ConfirmEmailAsync(admin, token);
             }
         }
+        else if (!await userManager.IsInRoleAsync(admin, "Admin"))
+            await userManager.AddToRoleAsync(admin, RoleNames.First(x => x == "Admin"));
     }
 }
