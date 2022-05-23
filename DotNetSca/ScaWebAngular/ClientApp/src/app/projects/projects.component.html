@@ -23,6 +23,18 @@
   </tbody>
 </table>
 
+<div>
+  <mat-card *ngFor="let project of projects">
+    <mat-card-title>{{project.name}}</mat-card-title>
+    <mat-card-subtitle>{{project.description}}</mat-card-subtitle>
+    <mat-card-actions align="end">
+      <button color="primary" mat-button>Open</button>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+</div>
+
+<!--
 <ngb-accordion #a="ngbAccordion">
   <ngb-panel id="static-1" title="Simple">
     <ng-template ngbPanelContent>
@@ -66,3 +78,4 @@
     </ng-template>
   </ngb-panel>
 </ngb-accordion>
+-->
