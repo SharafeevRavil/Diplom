@@ -66,6 +66,12 @@ public static class Program
         var b = await NuGetLoader.NuGetLoader.LoadNuGetPackages(a);
     }
 
+    static async Task Direct()
+    {
+        const string dirPath = @"C:\Users\Admin\RiderProjects\Diplom\DotNetSca";
+        var a = DirectDependenciesDetector.GetDependencies(dirPath);
+    }
+
     public static async Task Main()
     {
         Console.WriteLine("TestConsole / Hello, World!");
@@ -74,6 +80,8 @@ public static class Program
         
         //RunBenchmarks();
         
-        await RunSimHashes();
+        //await RunSimHashes();
+        
+        await Direct();
     }
 }
