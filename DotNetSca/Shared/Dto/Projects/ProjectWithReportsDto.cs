@@ -1,6 +1,6 @@
-﻿using ScaWebAngular.Dto.Reports;
+﻿using Shared.Dto.Reports;
 
-namespace ScaWebAngular.Dto.Projects;
+namespace Shared.Dto.Projects;
 
 public class ProjectWithReportsDto : ProjectDto
 {

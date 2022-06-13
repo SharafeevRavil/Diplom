@@ -16,6 +16,7 @@
     <ItemGroup>
       <ProjectReference Include="..\DotNetSca\DotNetSca.csproj" />
       <ProjectReference Include="..\NuGetLoader\NuGetLoader.csproj" />
+      <ProjectReference Include="..\Shared\Shared.csproj" />
     </ItemGroup>
 
 </Project>

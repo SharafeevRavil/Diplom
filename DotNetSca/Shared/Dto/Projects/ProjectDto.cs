@@ -1,4 +1,4 @@
-﻿namespace ScaWebAngular.Dto.Projects;
+﻿namespace Shared.Dto.Projects;
 
 public class ProjectDto
 {

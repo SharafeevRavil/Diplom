@@ -1,9 +1,11 @@
+<button class="btn btn-primary" (click)="back()">Back</button>
+
 <div *ngIf="!project" class="text-center">
   <p><em>Loading...</em></p>
 </div>
 
 <div *ngIf="project">
-  <h1>Project {{project.name}}</h1>
+  <h1>Project #{{project.id}} {{project.name}}</h1>
   <p>{{project.description}}</p>
 
   <h3>Reports:</h3>

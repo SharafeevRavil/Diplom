@@ -15,6 +15,8 @@ import { ProjectsComponent } from './projectss/projects/projects.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectViewComponent } from './projectss/project-view/project-view.component';
+import { ApiTokensComponent } from './api-tokens/api-tokens.component';
+import { ReportViewComponent } from './report-view/report-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ProjectViewComponent } from './projectss/project-view/project-view.comp
     NavMenuComponent,
     HomeComponent,
     ProjectsComponent,
-    ProjectViewComponent
+    ProjectViewComponent,
+    ApiTokensComponent,
+    ReportViewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -34,6 +38,9 @@ import { ProjectViewComponent } from './projectss/project-view/project-view.comp
 
       {path: 'projects', component: ProjectsComponent, canActivate: [AuthorizeGuard]},
       {path: 'projects/:id', component: ProjectViewComponent, canActivate: [AuthorizeGuard]},
+
+      {path: 'apiTokens', component: ApiTokensComponent, canActivate: [AuthorizeGuard]},
+      {path: 'projects/:projectId/reports/:reportId', component: ReportViewComponent, canActivate: [AuthorizeGuard]},
     ]),
 //    NgbModule,
     BrowserAnimationsModule,

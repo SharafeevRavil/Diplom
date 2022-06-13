@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ScaWebAngular.Data;
-using ScaWebAngular.Dto.Projects;
-using ScaWebAngular.Dto.Reports;
-using ScaWebAngular.Helpers;
 using ScaWebAngular.Models;
+using Shared.Dto.Projects;
+using Shared.Dto.Reports;
 
 namespace ScaWebAngular.Services;
 

@@ -452,9 +452,6 @@ namespace ScaWebAngular.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("Guid")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Hash")
                         .HasColumnType("TEXT");
 

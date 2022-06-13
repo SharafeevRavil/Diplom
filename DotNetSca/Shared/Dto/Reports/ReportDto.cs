@@ -1,4 +1,4 @@
-﻿namespace ScaWebAngular.Dto.Reports;
+﻿namespace Shared.Dto.Reports;
 
 public class ReportDto
 {

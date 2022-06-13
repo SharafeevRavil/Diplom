@@ -1,14 +1,15 @@
-﻿using OssIndexClient;
-using Shared.Dto;
+﻿using ScaApi.OssIndexClient;
+using Shared.Dto.Packages;
+using Shared.Dto.Vulnerabilities;
 
 namespace ScaApi.Services;
 
 public class VulnerabilitiesService
 {
-    public async Task<List<PackageWithVulnerabilitiesDto>> FindVulnerabilities(IEnumerable<PackageDto> packages)
+    public async Task<List<PackageVulnerabilitiesDto>> FindVulnerabilities(IEnumerable<PackageDto> packages)
     {
         var groups = packages.Chunk(128);
-        var list = new List<PackageWithVulnerabilitiesDto>();
+        var list = new List<PackageVulnerabilitiesDto>();
 
         foreach (var packageGroup in groups)
         {
@@ -18,12 +19,12 @@ public class VulnerabilitiesService
 
             foreach (var report in reports)
             {
-                list.Add(new PackageWithVulnerabilitiesDto()
+                list.Add(new PackageVulnerabilitiesDto()
                 {
                     PackageId = report.Name,
                     PackageVersion = report.Version,
                     Vulnerabilities = report.Vulnerabilities
-                        .Select(v => new Shared.Dto.VulnerabilityDto()
+                        .Select(v => new VulnerabilityDto()
                         {
                             Title = v.Title,
                             Description = v.Description,

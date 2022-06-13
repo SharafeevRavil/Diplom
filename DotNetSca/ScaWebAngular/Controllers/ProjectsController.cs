@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using ScaWebAngular.Dto.Projects;
 using ScaWebAngular.Models;
 using ScaWebAngular.Services;
+using Shared.Dto.Projects;
 
 namespace ScaWebAngular.Controllers;
 

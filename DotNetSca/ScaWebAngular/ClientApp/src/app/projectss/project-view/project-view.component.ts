@@ -36,4 +36,8 @@ export class ProjectViewComponent implements OnInit {
   open(id: number) {
     this.router.navigateByUrl('/projects/' + this.projectId + '/reports/' + id)
   }
+
+  back() {
+    this.router.navigateByUrl('/projects')
+  }
 }

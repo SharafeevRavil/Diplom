@@ -32,6 +32,11 @@
             >Projects</a
             >
           </li>
+          <li *ngIf="isAuthenticated | async" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/apiTokens']"
+            >Api Tokens</a
+            >
+          </li>
         </ul>
         <app-login-menu></app-login-menu>
       </div>

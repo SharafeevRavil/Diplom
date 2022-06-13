@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ScaApi.Services;
-using Shared.Dto;
+using Shared.Dto.Packages;
+using Shared.Dto.Signatures;
 
 namespace ScaApi.Controllers;
 

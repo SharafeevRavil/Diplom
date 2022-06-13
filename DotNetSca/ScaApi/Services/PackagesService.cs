@@ -2,7 +2,9 @@
 using DotNetScaServerData.DbContext;
 using DotNetScaServerData.Models;
 using Microsoft.EntityFrameworkCore;
-using Shared.Dto;
+using Shared.Dto.Packages;
+using Shared.Dto.Signatures;
+using Shared.Dto.Vulnerabilities;
 
 namespace ScaApi.Services;
 
@@ -36,17 +38,17 @@ where dist > {distance}")
             .Take(limit);
     }
 
-    public async Task<List<SignatureWithPackageVulnerabilitiesDto>> FindVulnerabilitiesInSignatures(
+    public async Task<List<SignaturePackageVulnerabilitiesDto>> FindVulnerabilitiesInSignatures(
         IEnumerable<SignatureDto> signatures)
     {
         var list = signatures
             .Select(x =>
             {
                 var found = FindByHash(x.Hash, limit: 5).ToList();
-                return new SignatureWithPackageVulnerabilitiesDto()
+                return new SignaturePackageVulnerabilitiesDto()
                 {
-                    Guid = x.Guid,
-                    Packages = found.Select(y => new PackageWithVulnerabilitiesDescriptionDto()
+                    Id = x.Id,
+                    Packages = found.Select(y => new PackageVulnerabilitiesDescriptionDto()
                     {
                         PackageId = y.Package.PackageId,
                         PackageVersion = y.Package.PackageVersion,

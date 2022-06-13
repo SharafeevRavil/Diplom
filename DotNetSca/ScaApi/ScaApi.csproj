@@ -14,7 +14,6 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="OssIndexClient" Version="1.0.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
@@ -22,6 +21,11 @@
       <ProjectReference Include="..\DotNetScaServerData\DotNetScaServerData.csproj" />
       <ProjectReference Include="..\DotNetSca\DotNetSca.csproj" />
       <ProjectReference Include="..\Shared\Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="OssIndexClient\OssIndexClient.csproj" />
+      <Content Include="OssIndexClient\OssIndexClient.csproj.user" />
     </ItemGroup>
 
 </Project>

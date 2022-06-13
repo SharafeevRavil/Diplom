@@ -1,0 +1,60 @@
+<div *ngIf="!report" class="text-center">
+  <p><em>Loading...</em></p>
+</div>
+
+<button class="btn btn-primary m-2" (click)="back()">Back</button>
+
+<div *ngIf="report" style="margin-bottom: 50px">
+  <h1>Report from {{report.createdDate | date:'dd/MM/yyyy HH:mm:ss'}}</h1>
+  <p>Initiator: {{report.initiator}}</p>
+
+  <hr>
+
+  <h2>Packages:</h2>
+  <div *ngFor="let p of report.explicitPackages" style="margin-left: 20px">
+    <hr>
+    <h4>Package {{p.packageId}}@{{p.packageVersion}}</h4>
+    <!--<p>{{p.description}}</p>-->
+    <h4 *ngIf="p.vulnerabilities.length > 0">Found {{p.vulnerabilities.length}} vulnerabilities:</h4>
+    <div *ngFor="let v of p.vulnerabilities" style="margin-left: 20px">
+      <hr>
+      <h5>{{v.title}}</h5>
+      <p>{{v.description}}</p>
+      CVE: {{v.cve}}<br>
+      CWE: {{v.cwe}}<br>
+      CVSS Score: {{v.cvssScore}}<br>
+      CVSS Vector: {{v.cvssVector}}<br>
+      <a href="{{v.reference}}">Details</a>
+    </div>
+  </div>
+
+  <br>
+  <hr>
+
+  <h2>Signatures:</h2>
+  <div *ngFor="let s of report.generatedSignatures" style="margin-left: 20px">
+    <hr>
+    <h3>Signature</h3>
+    <textarea style="width: 100%;">{{s.hash}}</textarea>
+    <p>{{s.description}}</p>
+
+    <h4>Packages:</h4>
+    <div *ngFor="let p of s.packages" style="margin-left: 20px">
+      <hr>
+      <h4>Package {{p.packageId}}@{{p.packageVersion}}</h4>
+      <!--<p>{{p.description}}</p>-->
+      <h4 *ngIf="p.vulnerabilities.length > 0">Found {{p.vulnerabilities.length}} vulnerabilities:</h4>
+      <div *ngFor="let v of p.vulnerabilities" style="margin-left: 20px">
+        <hr>
+        <h5>{{v.title}}</h5>
+        <p>{{v.description}}</p>
+        CVE: {{v.cve}}<br>
+        CWE: {{v.cwe}}<br>
+        CVSS Score: {{v.cvssScore}}<br>
+        CVSS Vector: {{v.cvssVector}}<br>
+        <a href="{{v.reference}}">Details</a>
+      </div>
+    </div>
+  </div>
+
+</div>

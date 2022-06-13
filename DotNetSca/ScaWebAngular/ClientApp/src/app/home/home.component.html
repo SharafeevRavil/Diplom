@@ -1,3 +1,6 @@
 <h1>Home page of local SCA web service</h1>
+
 <h4 *ngIf="isAuthenticated | async">Route to your projects: <a routerLink="/projects">Projects</a></h4>
+<h4 *ngIf="isAuthenticated | async">Route to your api tokens: <a routerLink="/apiTokens">Api Tokens</a></h4>
+
 <h4 *ngIf="(isAuthenticated | async) !== true">Please sign in to use the service: <a routerLink="/authentication/login">Sign In</a></h4>
