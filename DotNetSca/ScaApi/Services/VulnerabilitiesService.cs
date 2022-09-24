@@ -8,7 +8,8 @@ public class VulnerabilitiesService
 {
     public async Task<List<PackageVulnerabilitiesDto>> FindVulnerabilities(IEnumerable<PackageDto> packages)
     {
-        var groups = packages.Chunk(128);
+        //var groups = packages.Chunk(128);
+        var groups = packages.Chunk(10);
         var list = new List<PackageVulnerabilitiesDto>();
 
         foreach (var packageGroup in groups)
